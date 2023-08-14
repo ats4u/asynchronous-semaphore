@@ -1,0 +1,33 @@
+{
+  "name": "rendezvous-promise",
+  "version": "1.0.0",
+  "description": "let an async session to wait for another async session to finish",
+  "main": "rendezvous.mjs",
+  "type" :"module",
+  "exports": {
+    "./common.js": {
+      "default": "./rendezvous.cjs"
+    },
+    "." : {
+      "import":  "./rendezvous.mjs",
+      "require": "./rendezvous.cjs"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ats4u/rendezvous-promise.git"
+  },
+  "keywords": [
+    "promise",
+    "waitfor"
+  ],
+  "author": "Atsushi Oka",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ats4u/rendezvous-promise/issues"
+  },
+  "homepage": "https://github.com/ats4u/rendezvous-promise#readme"
+}
