@@ -1,37 +1,49 @@
 
-export class Rendezvous {
+export class Semaphore {
+  capacity = 1;
   running = false;
-  queue = [];
-  constructor() {
+  promiseQueue = [];
+  waitQueue = [];
+
+  constructor(capacity=1) {
+    this.capacity = capacity;
   }
 
-  async exec( promise ) {
-    if ( 'then' in promise ) {
-      try {
-        this.running = true;
-        return await promise;
-      } finally {
-        this.running = false;
-        for ( const qf of this.queue ) {
-          /* await */ (async()=>{
-            qf();
-          })();
-        }
-      }
-    } else {
-      return /* is not a */ promise;
+  __enter( promise ) {
+    if ( ! this.promiseQueue.find( e=>e===promise ) ){
+      this.promiseQueue = [ ...(this.promiseQueue), promise ];
+    }
+  }
+  __leave( promise ) {
+    this.promiseQueue = this.promiseQueue.filter( e=>e!==promise );
+    if ( 0 < this.waitQueue.length ) {
+      /*await*/ this.waitQueue.pop()();
     }
   }
 
-  /*async*/ wait() {
-    if ( this.running ) {
+  /*async*/ __wait() {
+    if ( this.capacity <= this.promiseQueue.length ) {
       return new Promise((resolve,reject)=>{
-        this.queue.push( resolve );
+        this.waitQueue.unshift( resolve );
       });
     } else {
       return new Promise((resolve,reject)=>{
         resolve();
       });
+    }
+  }
+
+  async take( f ) {
+    const promise = (async()=>{
+      await this.__wait();
+      return await f();
+    })();
+
+    try {
+      this.__enter( promise );
+      return await promise;
+    } finally {
+      this.__leave( promise );
     }
   }
 }
