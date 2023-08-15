@@ -1,17 +1,13 @@
-
 class Semaphore {
   capacity = 1;
-  running = false;
   promiseQueue = [];
   waitQueue = [];
-
   constructor(capacity=1) {
     this.capacity = capacity;
   }
-
   __enter( promise ) {
     if ( ! this.promiseQueue.find( e=>e===promise ) ){
-      this.promiseQueue = [ ...(this.promiseQueue), promise ];
+      this.promiseQueue.push( promise );
     }
   }
   __leave( promise ) {
@@ -20,7 +16,6 @@ class Semaphore {
       /*await*/ this.waitQueue.pop()();
     }
   }
-
   /*async*/ __wait() {
     if ( this.capacity <= this.promiseQueue.length ) {
       return new Promise((resolve,reject)=>{
@@ -32,7 +27,6 @@ class Semaphore {
       });
     }
   }
-
   async take( f ) {
     const promise = (async()=>{
       await this.__wait();
@@ -47,5 +41,4 @@ class Semaphore {
     }
   }
 }
-
 export const semaphore = (...args)=>new Semaphore(...args);
