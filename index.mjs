@@ -1,5 +1,5 @@
 
-export class Semaphore {
+class Semaphore {
   capacity = 1;
   running = false;
   promiseQueue = [];
@@ -48,3 +48,4 @@ export class Semaphore {
   }
 }
 
+export const semaphore = (...args)=>new Semaphore(...args);

@@ -1,24 +1,24 @@
 {
-  "name": "rendezvous-promise",
+  "name": "asynchronous-semaphore",
   "version": "1.0.0",
   "description": "let an async session to wait for another async session to finish",
-  "main": "rendezvous.mjs",
-  "type" :"module",
+  "main": "index.mjs",
+  "type": "module",
   "exports": {
     "./common.js": {
-      "default": "./rendezvous.cjs"
+      "default": "./index.cjs"
     },
-    "." : {
-      "import":  "./rendezvous.mjs",
-      "require": "./rendezvous.cjs"
+    ".": {
+      "import": "./index.mjs",
+      "require": "./index.cjs"
     }
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node index.test.mjs"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ats4u/rendezvous-promise.git"
+    "url": "git+https://github.com/ats4u/asynchronous-semaphore.git"
   },
   "keywords": [
     "promise",
@@ -27,7 +27,9 @@
   "author": "Atsushi Oka",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ats4u/rendezvous-promise/issues"
+    "url": "https://github.com/ats4u/asynchronous-semaphore/issues"
   },
-  "homepage": "https://github.com/ats4u/rendezvous-promise#readme"
+  "homepage": "https://github.com/ats4u/asynchronous-semaphore#readme",
+  "devDependencies": {
+  }
 }
