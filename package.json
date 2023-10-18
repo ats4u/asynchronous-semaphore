@@ -27,9 +27,9 @@
   "author": "Atsushi Oka",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ats4u/asynchronous-semaphore/issues"
+    "url": "https://github.com/kombucha-js/asynchronous-semaphore/issues"
   },
-  "homepage": "https://github.com/ats4u/asynchronous-semaphore#readme",
+  "homepage": "https://github.com/kombucha-js/asynchronous-semaphore#readme",
   "devDependencies": {
   }
 }

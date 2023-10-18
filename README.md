@@ -78,4 +78,7 @@ implement critical section especially when its capacity is 1.
   // end   3 (3000)
 ```
 
+ History
+======================
+(Wed, 18 Oct 2023 21:39:07 +0900) Released `v1.0.0`
 
