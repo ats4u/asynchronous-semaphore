@@ -42,3 +42,4 @@ class Semaphore {
   }
 }
 export const semaphore = (...args)=>new Semaphore(...args);
+export const critical_section = semaphore(1);

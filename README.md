@@ -80,5 +80,9 @@ implement critical section especially when its capacity is 1.
 
  History
 ======================
-(Wed, 18 Oct 2023 21:39:07 +0900) Released `v1.0.0`
+### (Wed, 18 Oct 2023 21:39:07 +0900) Released `v1.0.0`
+
+### (Fri, 02 Feb 2024 17:22:50 +0900) Released `v1.0.1`
+Add semaphore(1) as a global variable named `critical_section`.
+
 

@@ -1,6 +1,6 @@
 {
   "name": "asynchronous-semaphore",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "let an async session to wait for another async session to finish",
   "main": "index.mjs",
   "type": "module",
